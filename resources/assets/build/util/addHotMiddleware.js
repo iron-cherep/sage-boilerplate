@@ -1,6 +1,6 @@
 /**
- * Loop through webpack entry
- * and add the hot middleware
+ * Добавляет module-hot-reloading middleware
+ *
  * @param  {Object} entry webpack entry
  * @return {Object} entry with hot middleware
  */

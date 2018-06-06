@@ -133,9 +133,9 @@ let webpackConfig = {
       verbose: false,
     }),
     /**
-     * It would be nice to switch to copy-webpack-plugin, but
-     * unfortunately it doesn't provide a reliable way of
-     * tracking the before/after file names
+     * Было бы неплохо перейти на copy-webpack-plugin, но,
+     * к сожалению, он не предоставляет надёжного способа
+     * отслеживать имена файлов до и после
      */
     new CopyGlobsPlugin({
       pattern: config.copy,
@@ -179,7 +179,7 @@ let webpackConfig = {
   ],
 };
 
-/* eslint-disable global-require */ /** Let's only load dependencies as needed */
+/* eslint-disable global-require */ /** Будем подгружать зависимости только когда они понадобятся */
 
 if (config.enabled.optimize) {
   webpackConfig = merge(webpackConfig, require('./webpack.config.optimize'));

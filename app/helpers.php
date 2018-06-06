@@ -5,7 +5,7 @@ namespace App;
 use Roots\Sage\Container;
 
 /**
- * Get the sage container.
+ * Получает инстанс контейнера sage
  *
  * @param string $abstract
  * @param array  $parameters
@@ -24,9 +24,9 @@ function sage($abstract = null, $parameters = [], Container $container = null)
 }
 
 /**
- * Get / set the specified configuration value.
+ * Принимает и устанавливает указанные параметры конфигурации.
  *
- * If an array is passed as the key, we will assume you want to set an array of values.
+ * Если передан массив, предполагается, что мы хотим установить массив значений.
  *
  * @param array|string $key
  * @param mixed $default
@@ -60,7 +60,7 @@ function template($file, $data = [])
 }
 
 /**
- * Retrieve path to a compiled blade view
+ * Возвращает путь к скомпилированному шаблону blade
  * @param $file
  * @param array $data
  * @return string
@@ -131,7 +131,7 @@ function locate_template($templates)
 }
 
 /**
- * Determine whether to show the sidebar
+ * Определяет необходимость отображения сайдбара
  * @return bool
  */
 function display_sidebar()

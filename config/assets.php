@@ -4,13 +4,13 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Assets Manifest
+    | Манифест статических файлов
     |--------------------------------------------------------------------------
     |
-    | Your asset manifest is used by Sage to assist WordPress and your views
-    | with rendering the correct URLs for your assets. This is especially
-    | useful for statically referencing assets with dynamically changing names
-    | as in the case of cache-busting.
+    | Манифест статических файлов используется Sage для рендеринга
+    | шаблонов с корректными URL ваших файлов. Это особенно полезно для статически
+    | подключаемых файлов, имя которых может динамически изменяться
+    | в процессе cache-busting'а
     |
     */
 
@@ -18,12 +18,11 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Assets Path URI
+    | Путь к собранной статике
     |--------------------------------------------------------------------------
     |
-    | The asset manifest contains relative paths to your assets. This URI will
-    | be prepended when using Sage's asset management system. Change this if
-    | you are using a CDN.
+    | В манифесте статических файлов указаны относительные пути, эти пути будут
+    | начинаться с данного URL. Измените эту строку, если вы используете CDN.
     |
     */
 

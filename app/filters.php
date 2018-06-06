@@ -3,7 +3,7 @@
 namespace App;
 
 /**
- * Add <body> classes
+ * Добавляет классы для <body>
  */
 add_filter('body_class', function (array $classes) {
     /** Add page slug if it doesn't exist */
@@ -13,12 +13,12 @@ add_filter('body_class', function (array $classes) {
         }
     }
 
-    /** Add class if sidebar is active */
+    /** Добавляет класс при активном сайдбаре */
     if (display_sidebar()) {
         $classes[] = 'sidebar-primary';
     }
 
-    /** Clean up class names for custom templates */
+    /** Подчищает имена классов кастомных шаблонов */
     $classes = array_map(function ($class) {
         return preg_replace(['/-blade(-php)?$/', '/^page-template-views/'], '', $class);
     }, $classes);
@@ -27,14 +27,14 @@ add_filter('body_class', function (array $classes) {
 });
 
 /**
- * Add "… Continued" to the excerpt
+ * Добавляет "… Подробнее" к отрывку (excerpt)
  */
 add_filter('excerpt_more', function () {
     return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', 'sage') . '</a>';
 });
 
 /**
- * Template Hierarchy should search for .blade.php files
+ * Заставляет иерархию шаблонов искать .blade.php файлы
  */
 collect([
     'index', '404', 'archive', 'author', 'category', 'tag', 'taxonomy', 'date', 'home',
@@ -44,7 +44,7 @@ collect([
 });
 
 /**
- * Render page using Blade
+ * Рендеринг страницы Blade'ом
  */
 add_filter('template_include', function ($template) {
     $data = collect(get_body_class())->reduce(function ($data, $class) use ($template) {
@@ -58,7 +58,7 @@ add_filter('template_include', function ($template) {
 }, PHP_INT_MAX);
 
 /**
- * Tell WordPress how to find the compiled path of comments.blade.php
+ * Помогает WordPress найти путь к скомпилированному шаблону comments.blade.php
  */
 add_filter('comments_template', function ($comments_template) {
     $comments_template = str_replace(

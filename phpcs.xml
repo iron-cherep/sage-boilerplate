@@ -2,69 +2,69 @@
 <ruleset name="Roots">
   <description>Roots Coding Standards</description>
 
-  <!-- Scan these files -->
+  <!-- Файлы для сканирования -->
   <file>resources/functions.php</file>
   <file>resources/index.php</file>
   <file>app</file>
   <file>resources/views</file>
 
-  <!-- Show colors in console -->
+  <!-- Цвета в консоли -->
   <arg value="-colors"/>
 
-  <!-- Show sniff codes in all reports -->
+  <!-- Показывать ошибки во всех отчётах -->
   <arg value="s"/>
 
-  <!-- Use PSR-2 as a base -->
+  <!-- Использовать PSR-2 -->
   <rule ref="PSR2"/>
 
-  <!-- Exclusions below are for resources/views/ folder -->
+  <!-- Исключения для директори resources/views/ -->
 
-  <!-- Allow php files without any PHP in them -->
+  <!-- Разрешить php-файлы, не содержащие php -->
   <rule ref="Internal.NoCodeFound">
     <exclude-pattern>resources/views</exclude-pattern>
   </rule>
 
-  <!-- Allow braces on same line for named functions -->
+  <!-- Разрешить скобки без переноса строки для именованных функций -->
   <rule ref="Squiz.Functions.MultiLineFunctionDeclaration.BraceOnSameLine">
     <exclude-pattern>resources/views</exclude-pattern>
   </rule>
 
-  <!-- Allow closing braces to be on the same line -->
+  <!-- Разрешить закрывающие скобки без переноса строки -->
   <rule ref="Squiz.WhiteSpace.ScopeClosingBrace">
     <exclude-pattern>resources/views</exclude-pattern>
   </rule>
 
-  <!-- Disable newline after opening brace -->
+  <!-- Отключить перенос строки после открывающей скобки -->
   <rule ref="Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace">
     <exclude-pattern>resources/views</exclude-pattern>
   </rule>
 
-  <!-- Allow multiple PHP statements in the same line -->
+  <!-- Разрешить несколько PHP-выражений на одной линии -->
   <rule ref="Generic.Formatting.DisallowMultipleStatements.SameLine">
     <exclude-pattern>resources/views</exclude-pattern>
   </rule>
 
-  <!-- Disable PSR-2 indentation rules that are buggy with 2 spaces -->
+  <!-- Отключить правила табуляции PSR-2 т.к. они могут работать некорректно при оступе в 2 пробела -->
   <rule ref="PSR2.ControlStructures.SwitchDeclaration.BreakIndent">
     <exclude-pattern>resources/views</exclude-pattern>
   </rule>
 
-  <!-- Don't require a blank line after the last `use` -->
+  <!-- Не требовать новую линию после последнего `use` -->
   <rule ref="PSR2.Namespaces.UseDeclaration.SpaceAfterLastUse">
     <exclude-pattern>resources/views</exclude-pattern>
   </rule>
 
-  <!-- Allow long lines -->
+  <!-- Разрешить длинные линии -->
   <rule ref="Generic.Files.LineLength.TooLong">
     <exclude-pattern>resources/views</exclude-pattern>
   </rule>
 
-  <!-- Ignore indentation rules -->
+  <!-- Игнорировать правиля табуляции -->
   <rule ref="Generic.WhiteSpace.ScopeIndent">
     <exclude-pattern>resources/views</exclude-pattern>
   </rule>
 
-  <!-- Allow PHP closing tags -->
+  <!-- Разрешить закрывающие теги PHP -->
   <rule ref="PSR2.Files.ClosingTag.NotAllowed">
     <exclude-pattern>resources/views</exclude-pattern>
   </rule>
