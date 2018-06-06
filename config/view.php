@@ -4,11 +4,11 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | View Storage Paths
+    | Пути директории с шаблонами
     |--------------------------------------------------------------------------
     |
-    | Most template systems load templates from disk. Here you may specify
-    | an array of paths that should be checked for your views.
+    | Здесь вы можете указать массив путей, которые шаблонизатор проверит
+    | на наличие ваших файлов.
     |
     */
 
@@ -20,12 +20,12 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Compiled View Path
+    | Путь к скомпилированным blade-шаблонам
     |--------------------------------------------------------------------------
     |
-    | This option determines where all the compiled Blade templates will be
-    | stored for your application. Typically, this is within the uploads
-    | directory. However, as usual, you are free to change this value.
+    | Эта опция определяет место, куда будут складываться скомпилированные
+    | шаблоны blade. Обычно это директория для загрузок - uploads, но
+    | это поведение можно переопределить.
     |
     */
 
@@ -34,18 +34,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | View Namespaces
+    | Пространства имён шаблонов
     |--------------------------------------------------------------------------
     |
-    | Blade has an underutilized feature that allows developers to add
-    | supplemental view paths that may contain conflictingly named views.
-    | These paths are prefixed with a namespace to get around the conflicts.
-    | A use case might be including views from within a plugin folder.
+    | Blade имеет часто недооцениваемую функцию, позволяющую разработчику
+    | добавлять дополнительные пути для шаблонов, имена которых могут пересекаться.
+    | К именам этих путей добавляет префикс пространства имён, чтобы избежать
+    | конфликтов. Так, вы можете подключать шаблоны из директорий плагинов.
     |
     */
 
     'namespaces' => [
-        /* Given the below example, in your views use something like: @include('WC::some.view.or.partial.here') */
+        /* Для следующего примера вы могли бы подключить шаблон так: @include('WC::some.view.or.partial.here') */
         // 'WC' => WP_PLUGIN_DIR.'/woocommerce/templates/',
     ],
 ];

@@ -41,9 +41,10 @@ if (process.env.NODE_ENV === undefined) {
 }
 
 /**
- * If your publicPath differs between environments, but you know it at compile time,
- * then set SAGE_DIST_PATH as an environment variable before compiling.
- * Example:
+ * Если ваш publicPath отличается между средами (environments), и вы знаете его
+ * в момент сборки, установите переменную среды SAGE_DIST_PATH перед началом процесса.
+ *
+ * Например:
  *   SAGE_DIST_PATH=/wp-content/themes/sage/dist yarn build:production
  */
 if (process.env.SAGE_DIST_PATH) {
@@ -51,9 +52,10 @@ if (process.env.SAGE_DIST_PATH) {
 }
 
 /**
- * If you don't know your publicPath at compile time, then uncomment the lines
- * below and use WordPress's wp_localize_script() to set SAGE_DIST_PATH global.
- * Example:
+ * Если вы не знаете ваш publicPath в момент сборки, раскомментируйте линии ниже
+ * и воспользуйтесь wp_localize_script(), чтобы установить глобальную константу SAGE_DIST_PATH.
+ *
+ * Например:
  *   wp_localize_script('sage/main.js', 'SAGE_DIST_PATH', get_theme_file_uri('dist/'))
  */
 // Object.keys(module.exports.entry).forEach(id =>

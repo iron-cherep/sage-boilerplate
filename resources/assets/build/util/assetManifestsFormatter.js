@@ -6,16 +6,16 @@ module.exports = (key, value) => {
   }
   const manifest = value;
   /**
-   * Hack to prepend scripts/ or styles/ to manifest keys
+   * Хак, добавляющий scripts/ или styles/ к ключам манифеста.
    *
-   * This might need to be reworked at some point.
+   * Возможно будет переработано.
    *
-   * Before:
+   * До:
    *   {
    *     "main.js": "scripts/main_abcdef.js"
    *     "main.css": "styles/main_abcdef.css"
    *   }
-   * After:
+   * После:
    *   {
    *     "scripts/main.js": "scripts/main_abcdef.js"
    *     "styles/main.css": "styles/main_abcdef.css"
