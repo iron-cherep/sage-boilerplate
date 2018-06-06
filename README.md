@@ -1,120 +1,80 @@
 # [Sage](https://roots.io/sage/)
-[![Packagist](https://img.shields.io/packagist/vpre/roots/sage.svg?style=flat-square)](https://packagist.org/packages/roots/sage)
-[![devDependency Status](https://img.shields.io/david/dev/roots/sage.svg?style=flat-square)](https://david-dm.org/roots/sage#info=devDependencies)
-[![Build Status](https://img.shields.io/travis/roots/sage.svg?style=flat-square)](https://travis-ci.org/roots/sage)
 
-Sage is a WordPress starter theme with a modern development workflow.
+Sage - это тема WordPress, использующая современные средства разработки.
 
-## Features
+## Преимущества
 
-* Sass for stylesheets
-* Modern JavaScript
-* [Webpack](https://webpack.github.io/) for compiling assets, optimizing images, and concatenating and minifying files
-* [Browsersync](http://www.browsersync.io/) for synchronized browser testing
-* [Blade](https://laravel.com/docs/5.5/blade) as a templating engine
-* [Controller](https://github.com/soberwp/controller) for passing data to Blade templates
-* CSS framework (optional): [Bootstrap 4](https://getbootstrap.com/), [Bulma](https://bulma.io/), [Foundation](https://foundation.zurb.com/), [Tachyons](http://tachyons.io/)
+* Sass для препроцессинга стилей
+* Современный JavaScript
+* [Webpack](https://webpack.github.io/) для сборки статики, оптимизации изображений, конкатенации и минификации файлов
+* [Browsersync](http://www.browsersync.io/) для синхронизации с браузером в реальном времени
+* [Blade](https://laravel.com/docs/5.5/blade) в качестве шаблонизатора
+* [Controller](https://github.com/soberwp/controller) для передачи данных в шаблоны Blade
+* CSS-фреймворки (опционально): [Bootstrap 4](https://getbootstrap.com/), [Bulma](https://bulma.io/), [Foundation](https://foundation.zurb.com/), [Tachyons](http://tachyons.io/)
 
-See a working example at [roots-example-project.com](https://roots-example-project.com/).
+Рабочий пример: [roots-example-project.com](https://roots-example-project.com/)
 
-## Requirements
+## Требования
 
-Make sure all dependencies have been installed before moving on:
+Перед началом работы убедитесь, что все зависимости установлены:
 
 * [WordPress](https://wordpress.org/) >= 4.7
-* [PHP](https://secure.php.net/manual/en/install.php) >= 7.1.3 (with [`php-mbstring`](https://secure.php.net/manual/en/book.mbstring.php) enabled)
+* [PHP](https://secure.php.net/manual/en/install.php) >= 7.1.3 (с включенным модулем [`php-mbstring`](https://secure.php.net/manual/en/book.mbstring.php))
 * [Composer](https://getcomposer.org/download/)
 * [Node.js](http://nodejs.org/) >= 6.9.x
 * [Yarn](https://yarnpkg.com/en/docs/install)
 
-## Theme installation
-
-Install Sage using Composer from your WordPress themes directory (replace `your-theme-name` below with the name of your theme):
+## Структура файлов
 
 ```shell
-# @ app/themes/ or wp-content/themes/
-$ composer create-project roots/sage your-theme-name
+themes/your-theme-name/   # → Корневая директория темы
+├── app/                  # → PHP темы
+│   ├── controllers/      # → Файлы контроллеров
+│   ├── admin.php         # → Конфигурация customizer'а
+│   ├── filters.php       # → Фильтры темы
+│   ├── helpers.php       # → Вспомогательные функции
+│   └── setup.php         # → Основная конфигурация темы
+├── composer.json         # → Автозагрузка для файлов из `app/`
+├── composer.lock         # → Lock-файл Composer'а (не редактировать вручную)
+├── dist/                 # → Собранная статика темы (не редактировать вручную)
+├── node_modules/         # → Node.js-пакеты (не редактировать вручную)
+├── package.json          # → Node.js-зависимости и скрипты
+├── resources/            # → Статика и шаблоны темы
+│   ├── assets/           # → Статика для фронтенда
+│   │   ├── config.json   # → Конфигурация сборки статики
+│   │   ├── build/        # → Конфигурация Webpack и ESLint
+│   │   ├── fonts/        # → Шрифты
+│   │   ├── images/       # → Изображения
+│   │   ├── scripts/      # → JS
+│   │   └── styles/       # → Стили
+│   ├── functions.php     # → Автозагрузка Composer, зависимости темы
+│   ├── index.php         # → Не редактировать вручную
+│   ├── screenshot.png    # → Скриншот темы для панели администратора
+│   ├── style.css         # → Информация о теме
+│   └── views/            # → Файлы шаблонов
+│       ├── layouts/      # → Базовые шаблоны
+│       └── partials/     # → Включаемые части шаблонов
+└── vendor/               # → Пакеты Composer (не редактировать вручную)
 ```
 
-To install the latest development version of Sage, add `dev-master` to the end of the command:
+## Конфигурация темы
 
-```shell
-$ composer create-project roots/sage your-theme-name dev-master
-```
+Отредактируйте `app/setup.php`, чтобы включить или отключить функционал темы, настроить меню, сайдбары, размеры изображений.
 
-During theme installation you will have options to update `style.css` theme headers, select a CSS framework, and configure Browsersync.
+## Разработка темы
 
-## Theme structure
+* Запустите `yarn` из директории темы, чтобы установить зависимости
+* Отредактируйте настройки в `resources/assets/config.json`:
+  * `devUrl` должен отражать ваш локальный домен для разработки
+  * `publicPath` должен отражать вашу структуру директорий WordPress (`/wp-content/themes/sage` если не используется [Bedrock](https://roots.io/bedrock/))
 
-```shell
-themes/your-theme-name/   # → Root of your Sage based theme
-├── app/                  # → Theme PHP
-│   ├── controllers/      # → Controller files
-│   ├── admin.php         # → Theme customizer setup
-│   ├── filters.php       # → Theme filters
-│   ├── helpers.php       # → Helper functions
-│   └── setup.php         # → Theme setup
-├── composer.json         # → Autoloading for `app/` files
-├── composer.lock         # → Composer lock file (never edit)
-├── dist/                 # → Built theme assets (never edit)
-├── node_modules/         # → Node.js packages (never edit)
-├── package.json          # → Node.js dependencies and scripts
-├── resources/            # → Theme assets and templates
-│   ├── assets/           # → Front-end assets
-│   │   ├── config.json   # → Settings for compiled assets
-│   │   ├── build/        # → Webpack and ESLint config
-│   │   ├── fonts/        # → Theme fonts
-│   │   ├── images/       # → Theme images
-│   │   ├── scripts/      # → Theme JS
-│   │   └── styles/       # → Theme stylesheets
-│   ├── functions.php     # → Composer autoloader, theme includes
-│   ├── index.php         # → Never manually edit
-│   ├── screenshot.png    # → Theme screenshot for WP admin
-│   ├── style.css         # → Theme meta information
-│   └── views/            # → Theme templates
-│       ├── layouts/      # → Base templates
-│       └── partials/     # → Partial templates
-└── vendor/               # → Composer packages (never edit)
-```
+### Команды для сборки
 
-## Theme setup
+* `yarn start` — Следить за изменениями файлов и компилировать статику, начать сессию Browsersync 
+* `yarn build` — Скомпилировать и оптимизировать статику
+* `yarn build:production` — Скомпилировать статику для production
 
-Edit `app/setup.php` to enable or disable theme features, setup navigation menus, post thumbnail sizes, and sidebars.
+## Документация
 
-## Theme development
-
-* Run `yarn` from the theme directory to install dependencies
-* Update `resources/assets/config.json` settings:
-  * `devUrl` should reflect your local development hostname
-  * `publicPath` should reflect your WordPress folder structure (`/wp-content/themes/sage` for non-[Bedrock](https://roots.io/bedrock/) installs)
-
-### Build commands
-
-* `yarn start` — Compile assets when file changes are made, start Browsersync session
-* `yarn build` — Compile and optimize the files in your assets directory
-* `yarn build:production` — Compile assets for production
-
-## Documentation
-
-* [Sage documentation](https://roots.io/sage/docs/)
-* [Controller documentation](https://github.com/soberwp/controller#usage)
-
-## Contributing
-
-Contributions are welcome from everyone. We have [contributing guidelines](https://github.com/roots/guidelines/blob/master/CONTRIBUTING.md) to help you get started.
-
-## Gold sponsors
-
-Help support our open-source development efforts by [contributing to Sage on OpenCollective](https://opencollective.com/sage).
-
-<a href="https://kinsta.com/?kaid=OFDHAJIXUDIV"><img src="https://roots.io/app/uploads/kinsta.svg" alt="Kinsta" width="200" height="150"></a> <a href="https://k-m.com/"><img src="https://roots.io/app/uploads/km-digital.svg" alt="KM Digital" width="200" height="150"></a>
-
-## Community
-
-Keep track of development and community news.
-
-* Participate on the [Roots Discourse](https://discourse.roots.io/)
-* Follow [@rootswp on Twitter](https://twitter.com/rootswp)
-* Read and subscribe to the [Roots Blog](https://roots.io/blog/)
-* Subscribe to the [Roots Newsletter](https://roots.io/subscribe/)
-* Listen to the [Roots Radio podcast](https://roots.io/podcast/)
+* [Документация Sage](https://roots.io/sage/docs/)
+* [Документация Controller'а](https://github.com/soberwp/controller#usage)
